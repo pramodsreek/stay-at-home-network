@@ -1,9 +1,191 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../../middleware/auth');
+const { check, validationResult } = require('express-validator');
+
+const Profile = require('../../models/Profile');
+const User = require('../../models/User');
+
+// @route GET api/profile/self
+// @desc Get the current users profile
+// @access Private
+router.get('/self', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.user.id,
+    }).populate('user', ['name', 'avatar']);
+
+    if (!profile) {
+      return res.status(400).json({
+        msg: "You don't have a profile",
+      });
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route POST api/profile
+// @desc Create or Modify user profile
+// @access Private
+router.post(
+  '/',
+  [
+    auth,
+    [
+      check('country', 'Country is required').not().isEmpty(),
+      check('state', 'State is required').not().isEmpty(),
+      check('city', 'City is required').not().isEmpty(),
+      check('staystatus', 'Status is required').not().isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      });
+    }
+
+    const {
+      country,
+      state,
+      city,
+      staystatus,
+      activity,
+      activitystatus,
+      disruptiondescription,
+      supporttyperequired,
+      supportstatus,
+      supportdescription,
+      youtube,
+      twitter,
+      facebook,
+      instagram,
+    } = req.body;
+
+    //Build Profile Object
+    const profileFields = {};
+    profileFields.user = req.user.id;
+    if (country) profileFields.country = country;
+    if (state) profileFields.state = state;
+    if (city) profileFields.city = city;
+    if (staystatus) profileFields.staystatus = staystatus;
+
+    //build disruptions object
+    profileFields.disruption = {};
+    if (activity) profileFields.disruption.activity = activity;
+    if (activitystatus)
+      profileFields.disruption.activitystatus = activitystatus;
+    if (disruptiondescription)
+      profileFields.disruption.disruptiondescription = disruptiondescription;
+
+    //build support object
+    profileFields.support = {};
+    if (supporttyperequired)
+      profileFields.support.supporttyperequired = supporttyperequired;
+    if (supportstatus) profileFields.support.supportstatus = supportstatus;
+    if (supportdescription)
+      profileFields.support.supportdescription = supportdescription;
+
+    //build social object
+    //initialise first otherwise it will be undefined
+    profileFields.social = {};
+    if (youtube) profileFields.social.youtube = youtube;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (facebook) profileFields.social.facebook = facebook;
+    if (instagram) profileFields.social.instagram = instagram;
+
+    try {
+      let profile = await Profile.findOne({
+        user: req.user.id,
+      });
+      if (profile) {
+        //Update
+        profile = await Profile.findOneAndUpdate(
+          { user: req.user.id },
+          { $set: profileFields },
+          { new: true }
+        );
+
+        return res.json(profile);
+      }
+
+      //Create
+      profile = new Profile(profileFields);
+
+      await profile.save();
+      res.json(profile);
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
 
 // @route GET api/profile
-// @desc to test if route is working
-// @access Public (no need to get authorisation using tokens)
-router.get('/', (req, res) => res.send('Profile route'));
+// @desc Get all profiles
+// @access Private
+router.get('/', auth, async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+    res.json(profiles);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route GET api/profile/user/:user_id
+// @desc Get users profile
+// @access Private
+router.get('/user/:user_id', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.params.user_id,
+    }).populate('user', ['name', 'avatar']);
+
+    if (!profile) {
+      return res.status(400).json({
+        msg: 'The user does not have a profile.',
+      });
+    }
+
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    //Cast to ObjectId failed for value "5e8ac06bd8cb5414ec43d9781" at path "user" for model "profile" - the case where the profile id is not valid but it is a valid data
+    if (error.message.includes('Cast to ObjectId failed')) {
+      return res.status(400).json({
+        msg: 'The user does not have a profile.',
+      });
+    }
+
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route DELETE api/profile
+// @desc Delete profile, user & blogs
+// @access Private
+router.delete('/', auth, async (req, res) => {
+  try {
+    //removes blogs
+
+    //removes profile
+    await Profile.findOneAndRemove({
+      user: req.user.id,
+    });
+    //remove user
+    await User.findOneAndRemove({
+      _id: req.user.id,
+    });
+    res.json({ msg: 'User removed' });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;
