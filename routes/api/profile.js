@@ -53,12 +53,9 @@ router.post(
       state,
       city,
       staystatus,
-      activity,
-      activitystatus,
-      disruptiondescription,
-      supporttyperequired,
-      supportstatus,
-      supportdescription,
+      category,
+      subcategory,
+      description,
       youtube,
       twitter,
       facebook,
@@ -73,21 +70,11 @@ router.post(
     if (city) profileFields.city = city;
     if (staystatus) profileFields.staystatus = staystatus;
 
-    //build disruptions object
-    profileFields.disruption = {};
-    if (activity) profileFields.disruption.activity = activity;
-    if (activitystatus)
-      profileFields.disruption.activitystatus = activitystatus;
-    if (disruptiondescription)
-      profileFields.disruption.disruptiondescription = disruptiondescription;
-
-    //build support object
-    profileFields.support = {};
-    if (supporttyperequired)
-      profileFields.support.supporttyperequired = supporttyperequired;
-    if (supportstatus) profileFields.support.supportstatus = supportstatus;
-    if (supportdescription)
-      profileFields.support.supportdescription = supportdescription;
+    //build local expertise object
+    profileFields.localexpertise = {};
+    if (category) profileFields.localexpertise.category = category;
+    if (subcategory) profileFields.localexpertise.subcategory = subcategory;
+    if (description) profileFields.localexpertise.description = description;
 
     //build social object
     //initialise first otherwise it will be undefined
@@ -184,6 +171,78 @@ router.delete('/', auth, async (req, res) => {
     res.json({ msg: 'User removed' });
   } catch (error) {
     console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route PUT api/profile/localexpertise
+// @desc Add support requests
+// @access Private
+router.put(
+  '/localexpertise',
+  [
+    auth,
+    [
+      check('category', 'Category Required').not().isEmpty(),
+      check('subcategory', 'Subcategory required').not().isEmpty(),
+      check('description', 'Description of the local expertise required')
+        .not()
+        .isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      });
+    }
+
+    const { category, subcategory, description } = req.body;
+
+    const newLocalExpertise = {
+      category,
+      subcategory,
+      description,
+    };
+
+    try {
+      const profile = await Profile.findOne({
+        user: req.user.id,
+      });
+
+      profile.localexpertise.unshift(newLocalExpertise);
+
+      await profile.save();
+      res.json(profile);
+    } catch (error) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+// @route DELETE api/profile/localexpertise/:lexpt_id
+// @desc Add support requests
+// @access Private
+router.delete('/localexpertise/:lexpt_id', auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.user.id,
+    });
+
+    //Get remove index
+    const removeIndex = profile.localexpertise
+      .map((item) => item.id)
+      .indexOf(req.params.lexpt_id);
+
+    profile.localexpertise.splice(removeIndex, 1);
+
+    await profile.save();
+
+    res.json(profile);
+  } catch (error) {
+    console.error(err.message);
     res.status(500).send('Server Error');
   }
 });

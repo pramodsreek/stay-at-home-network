@@ -21,29 +21,15 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  disruption: [
+  localexpertise: [
     {
-      activity: {
+      category: {
         type: String,
       },
-      activitystatus: {
-        type: Boolean,
-        default: false,
-      },
-      disruptiondescription: {
+      subcategory: {
         type: String,
       },
-    },
-  ],
-  support: [
-    {
-      supporttyperequired: {
-        type: String,
-      },
-      supportstatus: {
-        type: String,
-      },
-      supportdescription: {
+      description: {
         type: String,
       },
     },
