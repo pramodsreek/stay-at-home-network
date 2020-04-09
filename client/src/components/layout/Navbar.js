@@ -3,21 +3,29 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCoffee,
+  faUser,
+  faSignOutAlt,
+  faCode,
+  faHome,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul>
       <li>
         <Link to='/dashboard'>
-          <i className='fas fa-user'></i>
+          <FontAwesomeIcon icon={faUser} />
           {'   '}
           <span className='hide-sm'>Dashboard</span>
         </Link>
       </li>
       <li>
         <a onClick={logout} href='#!'>
-          <i className='fas fa-sign-out-alt'></i>
-          {''}
+          <FontAwesomeIcon icon={faSignOutAlt} />
+          {'   '}
           <span className='hide-sm'>Logout</span>
         </a>
       </li>
@@ -42,7 +50,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <nav className='navbar bg-dark'>
       <h1>
         <Link to='/'>
-          <i className='fas fa-code'></i> StayAtHomeNetwork
+          <FontAwesomeIcon icon={faHome} />
+          {'   '}StayAtHomeNetwork
         </Link>
       </h1>
       {!loading && (
