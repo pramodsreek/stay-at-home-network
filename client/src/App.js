@@ -6,7 +6,14 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/profileforms/CreateProfile';
+import EditProfile from './components/profileforms/EditProfile';
+import AddExpertise from './components/profileforms/AddExpertise';
 import PrivateRoute from './components/routing/PrivateRoute';
+//fontawesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
@@ -14,10 +21,13 @@ import { loadUser } from './actions/auth';
 
 import './App.css';
 import setAuthToken from './utils/setAuthToken';
+import NotFound from './components/layout/NotFound';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
+
+library.add(fab, faCheckSquare, faCoffee);
 
 const App = () => {
   useEffect(() => {
@@ -36,6 +46,18 @@ const App = () => {
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute
+                exact
+                path='/createprofile'
+                component={CreateProfile}
+              />
+              <PrivateRoute exact path='/editprofile' component={EditProfile} />
+              <PrivateRoute
+                exact
+                path='/addexpertise'
+                component={AddExpertise}
+              />
+              <Route component={NotFound} />
             </Switch>
           </section>
         </Fragment>
