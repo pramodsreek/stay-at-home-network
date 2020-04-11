@@ -9,6 +9,8 @@ import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/profileforms/CreateProfile';
 import EditProfile from './components/profileforms/EditProfile';
 import AddExpertise from './components/profileforms/AddExpertise';
+import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
 import PrivateRoute from './components/routing/PrivateRoute';
 //fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -57,6 +59,8 @@ const App = () => {
                 path='/addexpertise'
                 component={AddExpertise}
               />
+              <PrivateRoute exact path='/profiles' component={Profiles} />
+              <PrivateRoute exact path='/profile/:id' component={Profile} />
               <Route component={NotFound} />
             </Switch>
           </section>

@@ -78,4 +78,4 @@ AddExpertise.propTypes = {
   addExpertise: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addExpertise })(AddExpertise);
+export default connect(null, { addExpertise })(withRouter(AddExpertise));
