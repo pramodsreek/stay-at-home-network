@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
+const normalize = require('normalize-url');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
@@ -45,11 +46,21 @@ router.post(
 
       // Get users gravatar based on the email
       // pg rated images only
-      const avatar = gravatar.url(email, {
-        s: '200',
-        r: 'pg',
-        d: 'mm',
-      });
+      //const avatar = gravatar.url(email, {
+      // s: '200',
+      // r: 'pg',
+      // d: 'mm',
+      // });
+
+      //gravatar not returning a proper url
+      const avatar = normalize(
+        gravatar.url(email, {
+          s: '200',
+          r: 'pg',
+          d: 'mm',
+        }),
+        { forceHttps: true }
+      );
 
       user = new User({
         name,

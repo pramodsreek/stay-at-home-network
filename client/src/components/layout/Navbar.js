@@ -9,6 +9,7 @@ import {
   faUser,
   faSignOutAlt,
   faHome,
+  faBlog,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
@@ -26,6 +27,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <FontAwesomeIcon icon={faCoffee} />
           {'   '}
           <span className='hide-sm'>Supporters</span>
+        </Link>
+      </li>
+      <li>
+        <Link to='/blogs'>
+          <FontAwesomeIcon icon={faBlog} />
+          {'   '}
+          <span className='hide-sm'>Blogs</span>
         </Link>
       </li>
       <li>

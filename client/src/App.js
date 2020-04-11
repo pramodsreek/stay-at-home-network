@@ -11,6 +11,8 @@ import EditProfile from './components/profileforms/EditProfile';
 import AddExpertise from './components/profileforms/AddExpertise';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
+import Blogs from './components/blogs/Blogs';
+import Blog from './components/blog/Blog';
 import PrivateRoute from './components/routing/PrivateRoute';
 //fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -61,6 +63,8 @@ const App = () => {
               />
               <PrivateRoute exact path='/profiles' component={Profiles} />
               <PrivateRoute exact path='/profile/:id' component={Profile} />
+              <PrivateRoute exact path='/blogs' component={Blogs} />
+              <PrivateRoute exact path='/blogs/:id' component={Blog} />
               <Route component={NotFound} />
             </Switch>
           </section>
