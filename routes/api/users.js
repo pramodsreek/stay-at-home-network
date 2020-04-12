@@ -4,7 +4,8 @@ const gravatar = require('gravatar');
 const normalize = require('normalize-url');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+//const config = require('config');
+require('dotenv').config();
 //deprecated version had express-validator/check
 const { check, validationResult } = require('express-validator');
 
@@ -85,11 +86,12 @@ router.post(
       };
 
       //change expiration to 3600
+      //config.get('jwtSecret') if using config
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        process.env['jwtSecret'],
         {
-          expiresIn: 360000,
+          expiresIn: 3600,
         },
         (err, token) => {
           if (err) throw err;

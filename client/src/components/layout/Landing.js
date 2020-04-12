@@ -13,14 +13,6 @@ const Landing = ({ isAuthenticated }) => {
       <div className='dark-overlay'>
         <div className='landing-inner'>
           <h1 className='x-large'>Stay At Home Network</h1>
-          <p className='lead'>
-            Create a supporter profile to connect with people in your locality,
-            to share neighbourhood experience during the stay-at-home. There is
-            no better time to write a blog post, sharing the best spots to have
-            a safe short outdoor exercises, places to order a good coffee or
-            finding something in the local shops. Happy sharing and being part
-            of local community!
-          </p>
           <div className='buttons'>
             <Link to='/register' className='btn btn-primary'>
               Sign Up

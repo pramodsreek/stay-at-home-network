@@ -1,10 +1,11 @@
 /* Global Styles */
 :root {
-  --primary-color: #2f0e5a;
+  --primary-color: #343a40;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --hover-color: #75bce2;
 }
 
 * {
@@ -133,7 +134,7 @@ img {
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
   border: none;
-  cursor: pointer;
+  cursor: auto;
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
@@ -154,6 +155,10 @@ img {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
+}
+
+.btn-gold {
+  background-color: #d4af37;
 }
 
 .btn-primary,
@@ -226,7 +231,6 @@ img {
 
 /* Overlay */
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;
@@ -323,7 +327,7 @@ button {
 }
 
 .navbar a:hover {
-  color: var(--primary-color);
+  color: var(--hover-color);
 }
 
 .navbar .welcome span {
@@ -333,12 +337,12 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/Red.jpg') no-repeat center center/cover;
+  background: url('./img/BlackAndWhite.jpg') no-repeat center center/cover;
   height: 110vh;
 }
 
 .landing-inner {
-  color: #fff;
+  color: rgb(3, 32, 28);
   height: 100%;
   width: 80%;
   margin: auto;
@@ -347,6 +351,12 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+p.with-eight {
+  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
+    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
+    0.05em 0.05em black;
 }
 
 /* Profiles Page */
@@ -390,7 +400,7 @@ button {
 }
 
 .profile-top .icons a:hover {
-  color: var(--dark-color);
+  color: var(--hover-color);
 }
 
 .profile-about {

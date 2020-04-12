@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const config = require('config');
+//const config = require('config');
+require('dotenv').config();
 
 //next callback to run once done to move to next piece of middleware
 
@@ -15,7 +16,8 @@ module.exports = function (req, res, next) {
   }
   //Verify token
   try {
-    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    //const decoded = jwt.verify(token, config.get('jwtSecret'));
+    const decoded = jwt.verify(token, process.env['jwtSecret']);
 
     req.user = decoded.user;
     next();
