@@ -46,5 +46,16 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+  "devDependencies": {
+    "check-prop-types": "^1.1.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "fetch-mock": "^9.3.1",
+    "jest-enzyme": "^7.1.2",
+    "moxios": "^0.4.0",
+    "node-fetch": "^2.6.0",
+    "redux-mock-store": "^1.5.4",
+    "sinon": "^9.0.2"
+  }
 }

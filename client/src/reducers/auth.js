@@ -16,6 +16,12 @@ const initialState = {
   user: null,
 };
 
+/**
+ * @function authReducer
+ * @param {Array} state - previous state
+ * @param {object} action - action to be reduced
+ * @return {array} - next state
+ */
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {

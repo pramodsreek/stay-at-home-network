@@ -65,6 +65,12 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 };
 
 //Login User
+/**
+ * @function login
+ * @param {*} email - user id of the supporter
+ * @param {*} password - password used to login
+ * @return {object} - data returned from rest call and added to store
+ */
 export const login = (email, password) => async (dispatch) => {
   const config = {
     headers: {
@@ -76,7 +82,7 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await axios.post('/api/auth', body, config);
-
+    //dispatch triggers state changes in store
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
