@@ -6,13 +6,27 @@
 
 ### Code Requirements
 
+
+
+**Requirement R7 - Produce an application with an intuitive user interface**
+
+The style used is similar to most of the websites with navigation bar on the top. There is work required in future versions to make the flow smoother, placement of links better and making the design better. 
+
+![](./docs/Website1.png)
+
+
+
+![](./docs/Website2.png)
+
+
+
 **Requirement R8 - *\*Provides evidence of user testing*\*:**
 
 In the development environment
 
 1. Displays the landing page
 
-   Test: The landing page is displayed and the redux state values are all empty. The user is not authenticated.
+   Test Case: The landing page is displayed and the redux state values are all empty. The user is not authenticated.
 
    Status: Pass
 
@@ -28,7 +42,7 @@ Also checked the props in development.
 
 2. Register Supporter
 
-Test: The user enters data to register.
+Test Case: The user enters data to register.
 
 Status: Failed (A number of actions displayed)
 
@@ -48,7 +62,7 @@ Checked the database and found the new user.
 
 3. Logout
 
-Test: Logout the user. The token should be removed and the user should not be authenticated. The LOGOUT action should be called.
+Test Case: Logout the user. The token should be removed and the user should not be authenticated. The LOGOUT action should be called.
 
 Status: Pass
 
@@ -58,7 +72,7 @@ Status: Pass
 
 4. Create Profile
 
-Test: Profile should be created successfully
+Test Case: Profile should be created successfully
 
 Status: Pass
 
@@ -68,7 +82,7 @@ Status: Pass
 
 5. Update Profile
 
-Test: Update the profile and add Facebook details.
+Test Case: Update the profile and add Facebook details.
 
 Status: Pass
 
@@ -82,7 +96,7 @@ Facebook details added successfully.
 
 6. Check Mobile Device
 
-Test: Test if the page is displayed on mobile successfully.
+Test Case: Test if the page is displayed on mobile successfully.
 
 Status: Pass 
 
@@ -90,7 +104,7 @@ Status: Pass
 
 7. Add Comment
 
-Test: Test if a comment can be added.
+Test Case: Test if a comment can be added.
 
 Status: Pass
 
@@ -102,7 +116,7 @@ Successful addition of the comment.
 
 8. Access Control
 
-Test: Test if the delete option is visible to a user who did not add the comment.
+Test Case: Test if the delete option is visible to a user who did not add the comment.
 
 Status: Pass
 
@@ -112,7 +126,7 @@ Status: Pass
 
 9. Test API
 
-Test: Test all endpoints
+Test Case: Test all endpoints
 
 Status: Pass
 
@@ -130,7 +144,7 @@ In the production environment
 
 1. Displays the landing page
 
-Test: The landing page is displayed and the redux state values are all empty. The user is not authenticated.
+Test Case: The landing page is displayed and the redux state values are all empty. The user is not authenticated.
 
 Status: Pass
 
@@ -144,7 +158,7 @@ Also checked the props in production.
 
 2. Register User
 
-Test: Test if the user can successfully register.
+Test Case: Test if the user can successfully register.
 
 Status: Pass
 
@@ -160,7 +174,7 @@ Check the database has the user.
 
 3. Logout
 
-Test: Logout and check the LOGOUT action is called and all properties is cleared. 
+Test Case: Logout and check the LOGOUT action is called and all properties is cleared. 
 
 Status: Pass
 
@@ -170,7 +184,7 @@ Status: Pass
 
 4. Invalid Data
 
-Test: Enter incorrect data and check if an error message is displayed.
+Test Case: Enter incorrect data and check if an error message is displayed.
 
 Status: Pass
 
@@ -180,7 +194,7 @@ Status: Pass
 
 5. Profile Creation
 
-Test: Test if the user can successfully create a profile.
+Test Case: Test if the user can successfully create a profile.
 
 Status: Pass
 
@@ -190,7 +204,7 @@ Status: Pass
 
 6. Profile Display
 
-Test: Test if profiles are listed
+Test Case: Test if profiles are listed
 
 Status: Fail (The images should be displayed from their email profiles. Gravatar package was used to get the images but they are missing.)
 
@@ -200,7 +214,7 @@ Status: Fail (The images should be displayed from their email profiles. Gravatar
 
 7. Individual Profile display
 
-Test: A single users profile can be viewed.
+Test Case: A single users profile can be viewed.
 
 Status: Pass
 
@@ -210,7 +224,7 @@ Status: Pass
 
 8. Add Blog
 
-Test: A blog can be added.
+Test Case: A blog can be added.
 
 Status: Pass
 
@@ -226,7 +240,7 @@ Blog successfully added.
 
 9. Delete Blog
 
-Test: Blog can be deleted.
+Test Case: Blog can be deleted.
 
 Status: Fail (Blog deleted but the page did not refresh)
 
@@ -236,7 +250,7 @@ Status: Fail (Blog deleted but the page did not refresh)
 
 10. Mandatory Field validation
 
-Test: When trying to submit null for a mandatory field, an error message is displayed.
+Test Case: When trying to submit null for a mandatory field, an error message is displayed.
 
 Status: Pass
 
