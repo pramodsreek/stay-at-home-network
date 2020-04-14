@@ -429,7 +429,7 @@ https://stay-at-home-network.herokuapp.com/
 
 **Requirement R12 - A link to your GitHub repository (repo)**
 
-https://github.com/pramodsreek/stay-at-home-network
+https://github.com/pramodsreek/stay-at-home-network.git
 
 **Requirement R13 - The contents of your `README.md` as submitted for `Real World App - Part A`**
 
