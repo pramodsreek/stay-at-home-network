@@ -8,19 +8,51 @@
 
 
 
+**Requirement R1 - *\*Write well designed code that:*\***
+
+The application was developed in MongoDB, Express, React and Node. Create React App was used to generate the front end. On the top if this other react frameworks for state and event management were used. Though it provides a boilerplate code for developers, it also adds a structure to organise the code.
+
+Redux - While using redux, the code is structured into actions, reducers and components.
+
+Hooks - React Hooks was used instead of classes to manage state and life cycle events. 
+
+Express - Express backend recommends models and routes to manage database and api.
+
+
+
+**Requirement R2 - Employ and utilise proper source control methodology (git)**
+
+Git was used for source control with github as the remote repository.
+
+
+
+**Requirement R3 - Use a recognised project management methodology**
+
+Used a Trello Board to manage delivery of modules.
+
+![](./docs/Kanban.png)
+
+
+
 **Requirement R4 - Use a recognised task delegation methodology**
 
 In the task delegation plan below, the filled slot indicates the developers working on the task.
 
 ![](./docs/ProjectTaskDelegationPlan.png)
 
+
+
 **Requirement R5 - Produce a working application that meets user needs**
 
 Stay At Home is a working application that connects people in the neighbourhood to share information about the locality. There is work required in future releases to restrict access to local profiles and blogs. And also add information about the locality using external API's.
 
+
+
 **Requirement R6 - Deploy the application to a cloud hosting service**
 
 Deployed the application with both front and backend to Heroku cloud platform using environment variables and MongoDB.
+
+
 
 **Requirement R7 - Produce an application with an intuitive user interface**
 
@@ -31,6 +63,8 @@ The style used is similar to most of the websites with navigation bar on the top
 
 
 ![](./docs/Website2.png)
+
+
 
 
 
