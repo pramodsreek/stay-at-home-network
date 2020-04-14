@@ -8,6 +8,20 @@
 
 
 
+**Requirement R4 - Use a recognised task delegation methodology**
+
+In the task delegation plan below, the filled slot indicates the developers working on the task.
+
+![](./docs/ProjectTaskDelegationPlan.png)
+
+**Requirement R5 - Produce a working application that meets user needs**
+
+Stay At Home is a working application that connects people in the neighbourhood to share information about the locality. There is work required in future releases to restrict access to local profiles and blogs. And also add information about the locality using external API's.
+
+**Requirement R6 - Deploy the application to a cloud hosting service**
+
+Deployed the application with both front and backend to Heroku cloud platform using environment variables and MongoDB.
+
 **Requirement R7 - Produce an application with an intuitive user interface**
 
 The style used is similar to most of the websites with navigation bar on the top. There is work required in future versions to make the flow smoother, placement of links better and making the design better. 
