@@ -2,11 +2,15 @@
 
 
 
+# T4A2-B - Full Stack Application - Part B
+
+
+
+The appplication developed is a simple social website to connect to people in the neighbourhood and share the local information while most people are staying at home during COVID-19 pandemic. There are lot of react sub frameworks used, which was a learning experience. 
+
 
 
 ### Code Requirements
-
-
 
 **Requirement R1 - *\*Write well designed code that:*\***
 
@@ -419,7 +423,17 @@ Test Failure
 
 
 
+**Requirement R11 - A link (URL) to your deployed website**
 
+https://stay-at-home-network.herokuapp.com/
+
+**Requirement R12 - A link to your GitHub repository (repo)**
+
+https://github.com/pramodsreek/stay-at-home-network
+
+**Requirement R13 - The contents of your `README.md` as submitted for `Real World App - Part A`**
+
+Contents of README from Part A assignment are in stay-at-home-network/README_T4A2-A.md
 
 
 
