@@ -1,9 +1,9 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
-import { login, type } from './actions/auth';
+import { login, type } from '../../src/actions/auth';
 //destructure import to get the type returned
-import { LOGIN_SUCCESS, LOGIN_FAIL } from './actions/types';
+import { LOGIN_SUCCESS, LOGIN_FAIL } from '../../src/actions/types';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
