@@ -4,7 +4,7 @@ const path = require('path');
 
 const app = express();
 
-//Connection to database
+//Connection to mongodb database
 connectionToDB();
 
 //initialise middleware
