@@ -5,3 +5,4 @@ config/default.json
 client/.DS_Store
 client/node_modules/
 .history
+env.list
