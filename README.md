@@ -6,7 +6,7 @@
 
 
 
-The appplication developed is a simple social website to connect to people in the neighbourhood and share the local information while most people are staying at home during COVID-19 pandemic. There are lot of react sub frameworks used, which was a learning experience. 
+The appplication developed is a simple social website to connect with people in the neighbourhood and share the local information while most people are staying at home during COVID-19 pandemic. There are lot of react sub frameworks used, which was a learning experience. 
 
 
 
